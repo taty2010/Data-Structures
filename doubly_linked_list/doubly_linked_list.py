@@ -7,6 +7,12 @@ class ListNode:
         self.prev = prev
         self.value = value
         self.next = next
+    
+    def delete(self):
+        if self.prev:
+            node.next.prev = node.prev
+        if self.next:
+            node.prev.next = node.next
             
 """
 Our doubly-linked list class. It holds references to 
@@ -51,13 +57,15 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        if
             
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
+        #1. delete from current position
+        #2. add_to_head()
         pass
         
     """
@@ -72,8 +80,19 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        #Don't need to return value
 
+        #Do need to update head, tail
+        if self.head is None:
+            return None
+        elif self.head is self.tail:
+            self.head = None
+            self.tail = None
+        elif node is self.head: #list has +2 nodes
+            self.head = node.next()
+            node.delete()
+            node.next.prev = node.prev
+            node.prev.next = node.next
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
